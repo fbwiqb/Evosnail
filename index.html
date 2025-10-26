@@ -1255,7 +1255,42 @@
                 ctx.restore();
             }
         }
-        
+        // 모달 함수들 추가 (기존 전역 변수 선언 아래에 추가)
+
+// 튜토리얼 모달
+function showTutorial() {
+    document.getElementById('tutorialModal').style.display = 'block';
+}
+
+function closeTutorial() {
+    document.getElementById('tutorialModal').style.display = 'none';
+}
+
+// 개발자 로그 모달
+function showDevLog() {
+    document.getElementById('devLogModal').style.display = 'block';
+}
+
+function closeDevLog() {
+    document.getElementById('devLogModal').style.display = 'none';
+}
+
+// 모달 외부 클릭 시 닫기
+window.onclick = function(event) {
+    const tutorialModal = document.getElementById('tutorialModal');
+    const devLogModal = document.getElementById('devLogModal');
+    const setupModal = document.getElementById('setupModal');
+    
+    if (event.target === tutorialModal) {
+        tutorialModal.style.display = 'none';
+    }
+    if (event.target === devLogModal) {
+        devLogModal.style.display = 'none';
+    }
+    if (event.target === setupModal) {
+        setupModal.style.display = 'none';
+    }
+}
         // 모달 열기
         function openModal(scenario) {
             currentScenario = scenario;
