@@ -13,13 +13,14 @@
         
         body {
             font-family: 'Malgun Gothic', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #3d4e9f;
             min-height: 100vh;
             padding: 10px;
             margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding-bottom: 60px;
         }
         
         /* 초기 선택 화면 */
@@ -39,7 +40,32 @@
         .selection-screen p {
             color: white;
             font-size: 1.3em;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
+        }
+
+        /* 홈 화면 버튼들 */
+        .home-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .home-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 12px 24px;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .home-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
         }
         
         .scenario-cards {
@@ -52,16 +78,17 @@
         
         .scenario-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 0;
             padding: 40px 30px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            border: 3px solid #3d4e9f;
         }
         
         .scenario-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.3);
         }
         
         .scenario-card .icon {
@@ -70,7 +97,7 @@
         }
         
         .scenario-card h2 {
-            color: #333;
+            color: #3d4e9f;
             margin-bottom: 15px;
             font-size: 1.8em;
         }
@@ -106,23 +133,56 @@
         .modal-content {
             background-color: white;
             margin: 10% auto;
-            padding: 30px;
-            border-radius: 20px;
-            width: 500px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 0;
+            border-radius: 0;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             animation: slideIn 0.3s;
+            border: 3px solid #3d4e9f;
         }
         
         @keyframes slideIn {
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+
+        .modal-header {
+            background: #3d4e9f;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         
-        .modal-content h3 {
-            color: #333;
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 1.8em;
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        .modal-body {
+            padding: 25px;
         }
         
         .distribution-setup {
@@ -133,7 +193,7 @@
             margin: 15px 0;
             padding: 15px;
             background: #f8f9fa;
-            border-radius: 10px;
+            border-radius: 0;
         }
         
         .trait-level label {
@@ -147,8 +207,8 @@
         .trait-level input[type="number"] {
             width: 80px;
             padding: 8px;
-            border: 2px solid #dee2e6;
-            border-radius: 5px;
+            border: 2px solid #3d4e9f;
+            border-radius: 0;
             font-size: 1em;
             text-align: center;
         }
@@ -163,7 +223,7 @@
             flex: 1;
             padding: 12px;
             border: none;
-            border-radius: 10px;
+            border-radius: 0;
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
@@ -171,8 +231,12 @@
         }
         
         .btn-start {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #3d4e9f;
             color: white;
+        }
+
+        .btn-start:hover {
+            background: #2d3e8f;
         }
         
         .btn-cancel {
@@ -180,12 +244,44 @@
             color: #495057;
         }
         
-        .btn-start:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .btn-cancel:hover {
+            background: #dee2e6;
+        }
+
+        /* 튜토리얼/개발자 로그 모달 스타일 */
+        .log-entry {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-date {
+            color: #3d4e9f;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .log-text {
+            color: #333;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .log-text strong {
+            color: #3d4e9f;
+        }
+
+        .log-text a {
+            color: #3d4e9f;
+            word-break: break-all;
         }
         
-        /* 시뮬레이션 화면 - 수직 레이아웃 */
+        /* 시뮬레이션 화면 */
         .simulation-screen {
             display: none;
             max-width: 1000px;
@@ -194,10 +290,11 @@
             max-height: 95vh;
             margin: auto;
             background: white;
-            border-radius: 20px;
+            border-radius: 0;
             padding: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             overflow-y: auto;
+            border: 3px solid #3d4e9f;
         }
         
         .simulation-screen.active {
@@ -210,7 +307,7 @@
             align-items: center;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #dee2e6;
+            border-bottom: 3px solid #3d4e9f;
         }
         
         .sim-title-section {
@@ -221,7 +318,8 @@
         
         .sim-title {
             font-size: 1.8em;
-            color: #333;
+            color: #3d4e9f;
+            font-weight: bold;
         }
         
         .header-controls {
@@ -238,7 +336,7 @@
             padding: 10px 20px;
             background: #e9ecef;
             border: none;
-            border-radius: 8px;
+            border-radius: 0;
             cursor: pointer;
             font-weight: bold;
             color: #495057;
@@ -258,10 +356,10 @@
         }
         
         #gameCanvas {
-            border: 3px solid #333;
-            border-radius: 10px;
+            border: 3px solid #3d4e9f;
+            border-radius: 0;
             cursor: crosshair;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             width: 100%;
             height: 100%;
         }
@@ -274,255 +372,174 @@
         .stats-panel {
             background: #f8f9fa;
             padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             font-size: 0.9em;
             overflow-y: auto;
+            border: 2px solid #3d4e9f;
         }
         
         .graph-panel {
             background: #f8f9fa;
             padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: none;
+            border: 2px solid #3d4e9f;
         }
         
         .graph-panel h3 {
-            color: #495057;
+            color: #3d4e9f;
             margin-bottom: 15px;
-            border-bottom: 2px solid #dee2e6;
+            border-bottom: 2px solid #3d4e9f;
             padding-bottom: 10px;
+            font-weight: bold;
         }
         
         #sideChart {
             max-height: 250px;
         }
         
-        .stats-panel h3 {
-            color: #495057;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #dee2e6;
-            padding-bottom: 10px;
+        .stats-section {
+            margin-bottom: 20px;
         }
         
-        .stat-item {
+        .stats-section h3 {
+            color: #3d4e9f;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3d4e9f;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        
+        .stat-row {
             display: flex;
             justify-content: space-between;
-            margin: 10px 0;
-            padding: 8px;
-            background: white;
-            border-radius: 5px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
         }
         
         .stat-label {
+            color: #495057;
             font-weight: bold;
-            color: #6c757d;
         }
         
         .stat-value {
-            color: #333;
+            color: #3d4e9f;
             font-weight: bold;
         }
         
         .controls {
             background: #f8f9fa;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            flex-shrink: 0;
-            display: flex;
-            gap: 15px;
-        }
-        
-        .control-section {
-            flex: 1;
-            padding: 10px;
-            background: white;
-            border-radius: 8px;
-        }
-        
-        .control-section h3 {
-            color: #495057;
-            margin-bottom: 10px;
-            font-size: 0.95em;
-        }section {
-            flex: 1;
-            margin-bottom: 0;
-            padding: 10px;
-            background: white;
-            border-radius: 8px;
-        }
-        
-        .control-section h3 {
-            color: #495057;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-        
-        .mode-selector {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .mode-button {
             padding: 15px;
-            border: 2px solid #dee2e6;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            text-align: center;
+            border-radius: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            border: 2px solid #3d4e9f;
         }
         
-        .mode-button.active {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            border-color: #45a049;
-        }
-        
-        .bg-selector {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .control-row {
+            display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
         }
         
-        .bg-button {
-            padding: 12px;
-            border: 2px solid #dee2e6;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        .bg-button.active {
+        .control-row button {
+            padding: 10px 20px;
+            background: #3d4e9f;
             color: white;
-            border-color: #333;
-        }
-        
-        .bg-button.active.grassland {
-            background: linear-gradient(135deg, #8BC34A 0%, #4CAF50 100%);
-        }
-        
-        .bg-button.active.openfield {
-            background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
-        }
-        
-        .control-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-        }
-        
-        button {
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
             border: none;
-            border-radius: 8px;
+            border-radius: 0;
             cursor: pointer;
+            font-weight: bold;
             transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        .control-row button:hover {
+            background: #2d3e8f;
         }
         
-        .btn-success {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-        }
-        
-        .btn-danger {
-            background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
-            color: white;
-        }
-        
-        .btn-warning {
-            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-            color: white;
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-        
-        button:disabled {
-            opacity: 0.5;
+        .control-row button:disabled {
+            background: #ccc;
             cursor: not-allowed;
         }
         
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin: 15px 0;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        
-        .checkbox-group label {
-            cursor: pointer;
-            color: #495057;
-            font-weight: 500;
-        }
-        
-        .slider-group {
-            margin: 15px 0;
-        }
-        
-        .slider-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #495057;
-            font-weight: 500;
-        }
-        
-        .slider-container {
+        .speed-control {
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .slider-container input[type="range"] {
-            flex: 1;
-            height: 6px;
-            -webkit-appearance: none;
-            appearance: none;
-            background: #dee2e6;
-            border-radius: 3px;
-            outline: none;
+        #speedSlider {
+            width: 150px;
         }
         
-        .slider-container input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #667eea;
-            border-radius: 50%;
-            cursor: pointer;
+        .graph-container {
+            background: white;
+            padding: 15px;
+            border-radius: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 2px solid #3d4e9f;
         }
         
-        .slider-value {
-            min-width: 50px;
-            text-align: center;
+        .graph-container h3 {
+            color: #3d4e9f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3d4e9f;
+            padding-bottom: 10px;
             font-weight: bold;
-            color: #667eea;
+        }
+        
+        #traitChart {
+            max-height: 300px;
+        }
+
+        /* Footer */
+        .footer-container {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .copyright {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .copyright a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .copyright a:hover {
+            color: rgba(255, 255, 255, 1);
+            text-decoration: underline;
+        }
+
+        .footer-btn {
+            background: rgba(61, 78, 159, 0.8);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .footer-btn:hover {
+            background: rgba(61, 78, 159, 1);
         }
     </style>
 </head>
@@ -530,1095 +547,726 @@
     <!-- 초기 선택 화면 -->
     <div class="selection-screen" id="selectionScreen">
         <h1>🐌 달팽이 진화 시뮬레이션</h1>
-        <p>어떤 형질의 진화를 관찰하시겠습니까?</p>
+        <p>자연선택이 집단의 특성을 어떻게 변화시키는지 관찰해보세요</p>
         
+        <div class="home-buttons">
+            <button class="home-btn" onclick="showTutorial()">📖 사용법</button>
+            <button class="home-btn" onclick="showDevLog()">📝 개발자 로그</button>
+        </div>
+
         <div class="scenario-cards">
-            <div class="scenario-card speed-card" onclick="openModal('speed')">
-                <div class="icon">⚡</div>
-                <h2>속도의 진화</h2>
-                <p>포식자로부터 도망치는 속도가 생존에 미치는 영향을 관찰합니다. 빠른 달팽이가 살아남을까요?</p>
+            <div class="scenario-card speed-card" onclick="selectScenario('speed')">
+                <div class="icon">🏃</div>
+                <h2>속도 진화</h2>
+                <p>포식자가 느린 달팽이를 더 쉽게 잡아먹습니다. 빠른 달팽이가 생존에 유리합니다.</p>
             </div>
             
-            <div class="scenario-card color-card" onclick="openModal('color')">
+            <div class="scenario-card color-card" onclick="selectScenario('color')">
                 <div class="icon">🎨</div>
-                <h2>색의 진화</h2>
-                <p>환경과의 보호색이 생존에 미치는 영향을 관찰합니다. 배경과 비슷한 색이 유리할까요?</p>
+                <h2>보호색 진화</h2>
+                <p>눈에 잘 띄는 밝은 색 달팽이가 먼저 잡아먹힙니다. 어두운 색이 생존에 유리합니다.</p>
             </div>
             
-            <div class="scenario-card size-card" onclick="openModal('size')">
+            <div class="scenario-card size-card" onclick="selectScenario('size')">
                 <div class="icon">📏</div>
-                <h2>크기의 진화</h2>
-                <p>개체의 크기가 포식 위험에 미치는 영향을 관찰합니다. 작은 개체가 더 안전할까요?</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 초기 설정 모달 -->
-    <div id="setupModal" class="modal">
-        <div class="modal-content">
-            <h3 id="modalTitle">초기 개체군 설정</h3>
-            
-            <div class="distribution-setup">
-                <div class="trait-level">
-                    <label>
-                        <span id="level1Label">레벨 1</span>
-                        <input type="number" id="level1Count" min="0" max="50" value="10">
-                    </label>
-                </div>
-                <div class="trait-level">
-                    <label>
-                        <span id="level2Label">레벨 2</span>
-                        <input type="number" id="level2Count" min="0" max="50" value="10">
-                    </label>
-                </div>
-                <div class="trait-level">
-                    <label>
-                        <span id="level3Label">레벨 3</span>
-                        <input type="number" id="level3Count" min="0" max="50" value="10">
-                    </label>
-                </div>
-                <div class="trait-level">
-                    <label>
-                        <span id="level4Label">레벨 4</span>
-                        <input type="number" id="level4Count" min="0" max="50" value="10">
-                    </label>
-                </div>
-                <div class="trait-level">
-                    <label>
-                        <span id="level5Label">레벨 5</span>
-                        <input type="number" id="level5Count" min="0" max="50" value="10">
-                    </label>
-                </div>
-            </div>
-            
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeModal()">취소</button>
-                <button class="btn-start" onclick="startSimulation()">시작하기</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 시뮬레이션 화면 -->
-    <div class="simulation-screen" id="simulationScreen">
-        <div class="sim-header">
-            <div class="sim-title-section">
-                <h2 class="sim-title" id="simTitle">속도의 진화</h2>
-                <div class="header-controls">
-                    <button class="btn-success" id="startBtn" onclick="toggleSimulation()">▶️ 시작</button>
-                    <button class="btn-warning" id="reproduceBtn" onclick="reproduce()">🔄 번식</button>
-                    <button class="btn-primary" id="toggleViewBtn" onclick="toggleView()">📊 그래프</button>
-                </div>
-            </div>
-            <button class="btn-back" onclick="backToSelection()">◀ 처음으로</button>
-        </div>
-        
-        <div class="controls">
-            <div class="control-section">
-                <h3>⚙️ 시뮬레이션 설정</h3>
-                
-                <div class="mode-selector">
-                    <div class="mode-button active" id="manualMode" onclick="setMode('manual')">
-                        👆 수동 모드
-                    </div>
-                    <div class="mode-button" id="autoMode" onclick="setMode('auto')">
-                        🦅 자동 모드
-                    </div>
-                </div>
-                
-                <div class="bg-selector" id="bgSelector" style="display: none; margin-top: 10px;">
-                    <div class="bg-button grassland active" id="grasslandBg" onclick="setBackground('grassland')">
-                        🌿 초지
-                    </div>
-                    <div class="bg-button openfield" id="openfieldBg" onclick="setBackground('openfield')">
-                        🏜️ 개활지
-                    </div>
-                </div>
-            </div>
-            
-            <div class="control-section">
-                <h3>🧬 진화 설정</h3>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="heritableCheck" checked>
-                    <label for="heritableCheck">유전</label>
-                    
-                    <input type="checkbox" id="mutationCheck" checked>
-                    <label for="mutationCheck">돌연변이</label>
-                </div>
-                
-                <div class="slider-group">
-                    <label for="mutationRate">돌연변이율:</label>
-                    <div class="slider-container">
-                        <input type="range" id="mutationRate" min="0" max="20" value="5">
-                        <span class="slider-value" id="mutationRateValue">5%</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="control-section">
-                <h3>🎮 컨트롤</h3>
-                
-                <div class="slider-group" id="speedControl" style="display: none;">
-                    <label for="simSpeed">시뮬레이션 속도:</label>
-                    <div class="slider-container">
-                        <input type="range" id="simSpeed" min="0.5" max="5" step="0.5" value="1">
-                        <span class="slider-value" id="simSpeedValue">1x</span>
-                    </div>
-                </div>
-                
-                <button class="btn-danger" onclick="resetSimulation()" style="width: 100%; margin-top: 10px;">↺ 초기화</button>
-            </div>
-        </div>
-        
-        <div class="main-area">
-            <canvas id="gameCanvas" width="600" height="400"></canvas>
-            
-            <div class="stats-panel" id="statsPanel">
-                <h3>📊 현재 상태</h3>
-                <div class="stat-item">
-                    <span class="stat-label">총 개체수:</span>
-                    <span class="stat-value" id="totalCount">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">세대:</span>
-                    <span class="stat-value" id="generation">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">평균값:</span>
-                    <span class="stat-value" id="avgValue">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">잡은 개체수:</span>
-                    <span class="stat-value" id="caughtCount">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">돌연변이 발생:</span>
-                    <span class="stat-value" id="mutationCount">0</span>
-                </div>
-                <div class="stat-item" id="eagleStats" style="display: none;">
-                    <span class="stat-label">독수리 사냥 성공:</span>
-                    <span class="stat-value" id="eagleHunts">0</span>
-                </div>
-            </div>
-            
-            <div class="graph-panel" id="graphPanel" style="display: none;">
-                <h3>📈 분포도</h3>
-                <canvas id="sideChart"></canvas>
+                <h2>크기 진화</h2>
+                <p>큰 달팽이는 새의 먹이가 되기 쉽습니다. 작은 달팽이가 생존에 유리합니다.</p>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- 튜토리얼 모달 -->
+    <div class="modal" id="tutorialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📖 사용법 안내</h3>
+                <button class="modal-close" onclick="closeTutorial()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="log-entry">
+                    <div class="log-date">🎯 프로그램 소개</div>
+                    <div class="log-text">
+                        <strong>달팽이 진화 시뮬레이션</strong>은 자연선택을 통한 진화 과정을 시각적으로 보여주는 교육용 프로그램입니다. 
+                        세 가지 시나리오(속도, 보호색, 크기)를 통해 특정 형질이 생존에 유리할 때 집단의 평균 형질이 어떻게 변화하는지 관찰할 수 있습니다.
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">📚 기본 사용법</div>
+                    <div class="log-text">
+                        <strong>1단계: 시나리오 선택</strong><br>
+                        • <strong>속도 진화</strong>: 느린 달팽이가 먼저 잡아먹힘<br>
+                        • <strong>보호색 진화</strong>: 밝은 색 달팽이가 먼저 잡아먹힘<br>
+                        • <strong>크기 진화</strong>: 큰 달팽이가 먼저 잡아먹힘<br><br>
+                        
+                        <strong>2단계: 초기 분포 설정 (선택)</strong><br>
+                        • 시나리오 선택 후 나타나는 팝업에서 형질 분포를 설정할 수 있습니다<br>
+                        • 낮음/중간/높음 형질을 가진 달팽이의 개체수를 조절하세요<br>
+                        • "시작하기" 버튼을 눌러 시뮬레이션을 시작합니다<br><br>
+                        
+                        <strong>3단계: 포식자 배치</strong><br>
+                        • 화면의 캔버스를 클릭하여 포식자를 배치하세요<br>
+                        • 포식자는 주변의 달팽이를 잡아먹습니다<br>
+                        • 생존에 불리한 형질을 가진 달팽이가 먼저 잡아먹힙니다<br><br>
+                        
+                        <strong>4단계: 세대 진행 및 관찰</strong><br>
+                        • "다음 세대" 버튼으로 세대를 진행합니다<br>
+                        • 생존한 달팽이들이 번식하여 새로운 세대가 생성됩니다<br>
+                        • 오른쪽 통계 패널에서 집단의 평균 형질 변화를 확인하세요<br>
+                        • 그래프를 통해 세대별 형질 분포 변화를 시각적으로 확인할 수 있습니다<br><br>
+                        
+                        <strong>5단계: 실험 제어</strong><br>
+                        • <strong>일시정지/재개</strong>: 시뮬레이션을 일시 중지하거나 다시 시작<br>
+                        • <strong>초기화</strong>: 시뮬레이션을 처음 상태로 되돌림<br>
+                        • <strong>속도 조절</strong>: 슬라이더로 시뮬레이션 속도 조절<br>
+                        • <strong>통계/그래프 보기</strong>: 우측 패널 전환
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">💡 학습 팁</div>
+                    <div class="log-text">
+                        <strong>효과적인 관찰 방법:</strong><br>
+                        • 각 시나리오를 여러 번 실행하여 일관된 패턴을 확인하세요<br>
+                        • 초기 분포를 다르게 설정하여 결과를 비교해보세요<br>
+                        • 포식자의 수와 배치 위치를 달리하며 실험하세요<br>
+                        • 그래프에서 세대가 지날수록 형질 분포가 어떻게 변하는지 주목하세요<br>
+                        • 평균값의 변화 추이를 관찰하세요<br><br>
+                        
+                        <strong>주의할 점:</strong><br>
+                        • 자연선택은 확률적 과정이므로 매번 똑같은 결과가 나오지 않을 수 있습니다<br>
+                        • 포식 압력이 너무 강하면 집단이 멸종할 수 있습니다<br>
+                        • 충분한 세대를 진행해야 명확한 진화 경향을 관찰할 수 있습니다
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">🔬 과학적 배경</div>
+                    <div class="log-text">
+                        이 시뮬레이션은 <strong>다윈의 자연선택 이론</strong>을 보여줍니다. 집단 내에 다양한 형질이 존재하고, 
+                        특정 형질이 생존과 번식에 유리할 때, 그 형질을 가진 개체가 더 많은 자손을 남기게 됩니다. 
+                        세대가 거듭되면서 유리한 형질의 빈도가 증가하고, 집단의 평균 형질이 변화합니다. 
+                        이것이 바로 <strong>진화</strong>입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 개발자 로그 모달 -->
+    <div class="modal" id="devLogModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📝 개발자 로그</h3>
+                <button class="modal-close" onclick="closeDevLog()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="log-entry">
+                    <div class="log-date">2025. 10. 26. (일)</div>
+                    <div class="log-text">
+                        <strong>달팽이 진화 시뮬레이션 v1.0 출시</strong><br>
+                        자연선택과 진화를 시각적으로 이해할 수 있는 교육용 시뮬레이션 프로그램을 공개했습니다. 
+                        세 가지 시나리오(속도, 보호색, 크기)를 통해 학생들이 진화의 원리를 직접 실험하고 관찰할 수 있습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 분포 설정 모달 -->
+    <div class="modal" id="distributionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">초기 분포 설정</h3>
+                <button class="modal-close" onclick="closeDistributionModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="distribution-setup" id="distributionSetup"></div>
+                <div class="modal-buttons">
+                    <button class="btn-start" onclick="startSimulation()">시작하기</button>
+                    <button class="btn-cancel" onclick="closeDistributionModal()">취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 시뮬레이션 화면 -->
+    <div class="simulation-screen" id="simulationScreen">
+        <div class="sim-header">
+            <div class="sim-title-section">
+                <h2 class="sim-title" id="simTitle"></h2>
+                <button class="btn-back" onclick="backToSelection()">← 돌아가기</button>
+            </div>
+        </div>
+
+        <div class="main-area">
+            <canvas id="gameCanvas" width="600" height="400"></canvas>
+            
+            <div class="stats-panel" id="statsPanel">
+                <div class="stats-section">
+                    <h3>📊 현재 상태</h3>
+                    <div class="stat-row">
+                        <span class="stat-label">현재 세대</span>
+                        <span class="stat-value" id="generationDisplay">1</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">생존 개체 수</span>
+                        <span class="stat-value" id="populationDisplay">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">평균 형질값</span>
+                        <span class="stat-value" id="avgTraitDisplay">0</span>
+                    </div>
+                </div>
+
+                <div class="stats-section">
+                    <h3 id="traitDistTitle">형질 분포</h3>
+                    <div class="stat-row">
+                        <span class="stat-label" id="lowLabel">낮음</span>
+                        <span class="stat-value" id="lowCount">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label" id="medLabel">중간</span>
+                        <span class="stat-value" id="medCount">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label" id="highLabel">높음</span>
+                        <span class="stat-value" id="highCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="graph-panel" id="graphPanel">
+                <h3>📈 형질 변화 그래프</h3>
+                <canvas id="sideChart"></canvas>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-row">
+                <button id="nextGenBtn" onclick="nextGeneration()">다음 세대 ▶</button>
+                <button id="pauseBtn" onclick="togglePause()">일시정지 ⏸</button>
+                <button onclick="resetSimulation()">초기화 🔄</button>
+                <button onclick="toggleView()">통계/그래프 전환</button>
+                
+                <div class="speed-control">
+                    <label for="speedSlider">속도:</label>
+                    <input type="range" id="speedSlider" min="1" max="10" value="5">
+                    <span id="speedDisplay">5x</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <h3>📊 세대별 평균 형질 변화</h3>
+            <canvas id="traitChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-container">
+        <div class="copyright">
+            ⓒ 2025 충남삼성고등학교 신도경T<br>
+            <a href="mailto:pantarei01@cnsa.hs.kr">pantarei01@cnsa.hs.kr</a>
+        </div>
+        <button class="footer-btn" onclick="showTutorial()">사용법</button>
+        <button class="footer-btn" onclick="showDevLog()">개발자 로그</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // 전역 변수
-        let currentScenario = '';
-        let currentMode = 'manual';
-        let currentBackground = 'grassland';
+        let currentScenario = null;
         let snails = [];
-        let eagles = [];
-        let isRunning = false;
-        let generation = 0;
-        let caughtCount = 0;
-        let mutationCount = 0;
-        let animationId = null;
-        let initialPopulation = 0;
-        let simulationSpeed = 1;
-        let backgroundImage = null;
-        let sideChart = null;
-        let showingGraph = false;
-        
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        // 시나리오별 레이블
-        const scenarioLabels = {
+        let predators = [];
+        let generation = 1;
+        let isPaused = false;
+        let gameSpeed = 5;
+        let canvas, ctx;
+        let traitChart, sideChart;
+        let generationData = [];
+        let showGraph = false;
+
+        // 시나리오 정의
+        const scenarios = {
             speed: {
-                title: '속도의 진화',
-                levels: ['매우 느림', '느림', '보통', '빠름', '매우 빠름'],
-                unit: 'm/s'
+                title: "🏃 속도 진화",
+                trait: "속도",
+                lowLabel: "느림",
+                medLabel: "보통",
+                highLabel: "빠름",
+                description: "느린 달팽이가 먼저 잡아먹힙니다"
             },
             color: {
-                title: '색의 진화',
-                levels: ['토양색', '갈색', '중간색', '연두색', '초록색'],
-                unit: ''
+                title: "🎨 보호색 진화",
+                trait: "색상",
+                lowLabel: "어두움",
+                medLabel: "중간",
+                highLabel: "밝음",
+                description: "밝은 색 달팽이가 먼저 잡아먹힙니다"
             },
             size: {
-                title: '크기의 진화',
-                levels: ['매우 작음', '작음', '보통', '큼', '매우 큼'],
-                unit: 'mm'
+                title: "📏 크기 진화",
+                trait: "크기",
+                lowLabel: "작음",
+                medLabel: "중간",
+                highLabel: "큼",
+                description: "큰 달팽이가 먼저 잡아먹힙니다"
             }
         };
-        
-        // 달팽이 클래스
-        class Snail {
-            constructor(level, x, y) {
-                this.level = level;
-                this.x = x || Math.random() * (canvas.width - 100) + 50;
-                this.y = y || Math.random() * (canvas.height - 100) + 50;
-                this.angle = Math.random() * Math.PI * 2;
-                this.alive = true;
-                this.targetAngle = this.angle;
-                this.turnSpeed = 0.05;
-                this.setupTraits();
-            }
-            
-            setupTraits() {
-                if (currentScenario === 'speed') {
-                    this.speed = 0.5 + (this.level - 1) * 0.5;
-                    this.size = 18;
-                    this.colorValue = 0.5;
-                } else if (currentScenario === 'color') {
-                    this.speed = 1.5;
-                    this.size = 18;
-                    this.colorValue = (this.level - 1) / 4;
-                } else if (currentScenario === 'size') {
-                    this.speed = 1.5;
-                    this.size = 10 + (this.level - 1) * 4;
-                    this.colorValue = 0.5;
-                }
-            }
-            
-            getColor() {
-                const brown = {r: 139, g: 69, b: 19};
-                const green = {r: 76, g: 175, b: 80};
-                const r = Math.floor(brown.r + (green.r - brown.r) * this.colorValue);
-                const g = Math.floor(brown.g + (green.g - brown.g) * this.colorValue);
-                const b = Math.floor(brown.b + (green.b - brown.b) * this.colorValue);
-                return `rgb(${r}, ${g}, ${b})`;
-            }
-            
-            update() {
-                if (!this.alive || !isRunning) return;
-                
-                if (Math.random() < 0.02) {
-                    this.targetAngle = Math.random() * Math.PI * 2;
-                }
-                
-                const angleDiff = this.targetAngle - this.angle;
-                this.angle += angleDiff * this.turnSpeed;
-                
-                const actualSpeed = this.speed * simulationSpeed;
-                this.x += Math.cos(this.angle) * actualSpeed;
-                this.y += Math.sin(this.angle) * actualSpeed;
-                
-                if (this.x < this.size || this.x > canvas.width - this.size) {
-                    this.angle = Math.PI - this.angle;
-                    this.targetAngle = this.angle;
-                    this.x = Math.max(this.size, Math.min(canvas.width - this.size, this.x));
-                }
-                if (this.y < this.size || this.y > canvas.height - this.size) {
-                    this.angle = -this.angle;
-                    this.targetAngle = this.angle;
-                    this.y = Math.max(this.size, Math.min(canvas.height - this.size, this.y));
-                }
-            }
-            
-            draw() {
-                if (!this.alive) return;
-                
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                
-                // 색상 가져오기
-                const shellColor = this.getColor();
-                
-                // 달팽이 껍질
-                ctx.fillStyle = shellColor;
-                ctx.beginPath();
-                ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // 나선 무늬
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                for (let i = 0; i < Math.PI * 4; i += 0.1) {
-                    const r = (this.size * 0.8) * (i / (Math.PI * 4));
-                    const x = Math.cos(i) * r;
-                    const y = Math.sin(i) * r;
-                    if (i === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                }
-                ctx.stroke();
-                
-                // 달팽이 몸체 (껍질과 같은 색상, 약간 더 진하게)
-                ctx.fillStyle = shellColor;
-                ctx.globalAlpha = 0.8;
-                ctx.beginPath();
-                ctx.ellipse(this.size * 0.8, 0, this.size * 0.6, this.size * 0.3, 0, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.globalAlpha = 1;
-                
-                // 더듬이 (몸체와 같은 색상)
-                ctx.strokeStyle = shellColor;
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(this.size * 1.2, -this.size * 0.1);
-                ctx.lineTo(this.size * 1.5, -this.size * 0.3);
-                ctx.moveTo(this.size * 1.2, this.size * 0.1);
-                ctx.lineTo(this.size * 1.5, this.size * 0.3);
-                ctx.stroke();
-                
-                // 눈 (검은색 유지)
-                ctx.fillStyle = 'black';
-                ctx.beginPath();
-                ctx.arc(this.size * 1.5, -this.size * 0.3, 2, 0, Math.PI * 2);
-                ctx.arc(this.size * 1.5, this.size * 0.3, 2, 0, Math.PI * 2);
-                ctx.fill();
-                
-                ctx.restore();
-            }
-            
-            isClicked(x, y) {
-                const dist = Math.sqrt((this.x - x) ** 2 + (this.y - y) ** 2);
-                return dist <= this.size * 1.5;
-            }
-            
-            getPredationProbability() {
-                let probability = 0.1;
-                probability += (this.size - 10) / 100;
-                probability -= (this.speed - 0.5) / 10;
-                
-                if (currentScenario === 'color') {
-                    const bgIsGreen = currentBackground === 'grassland';
-                    const colorDiff = bgIsGreen ? 
-                        Math.abs(this.colorValue - 1) : 
-                        Math.abs(this.colorValue - 0);
-                    probability += colorDiff * 0.5;
-                }
-                
-                return Math.max(0.01, Math.min(0.9, probability));
-            }
+
+        // 모달 함수들
+        function showTutorial() {
+            document.getElementById('tutorialModal').style.display = 'block';
         }
-        
-        // 독수리 클래스
-        class Eagle {
-            constructor(id = 0) {
-                this.id = id;
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.angle = Math.random() * Math.PI * 2;
-                this.speed = 3;
-                this.huntCooldown = 0;
-                this.target = null;
-                this.hunts = 0;
-            }
-            
-            update() {
-                if (!isRunning) return;
-                
-                this.huntCooldown = Math.max(0, this.huntCooldown - simulationSpeed);
-                
-                if (!this.target || !this.target.alive || this.huntCooldown > 0) {
-                    const aliveSnails = snails.filter(s => s.alive);
-                    if (aliveSnails.length > 0 && this.huntCooldown === 0) {
-                        const weights = aliveSnails.map(s => s.getPredationProbability());
-                        const totalWeight = weights.reduce((a, b) => a + b, 0);
-                        
-                        let random = Math.random() * totalWeight;
-                        for (let i = 0; i < aliveSnails.length; i++) {
-                            random -= weights[i];
-                            if (random <= 0) {
-                                this.target = aliveSnails[i];
-                                break;
-                            }
-                        }
-                    }
-                }
-                
-                if (this.target && this.target.alive) {
-                    const dx = this.target.x - this.x;
-                    const dy = this.target.y - this.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    
-                    this.angle = Math.atan2(dy, dx);
-                    
-                    const actualSpeed = this.speed * simulationSpeed;
-                    
-                    if (dist > 5) {
-                        this.x += Math.cos(this.angle) * actualSpeed;
-                        this.y += Math.sin(this.angle) * actualSpeed;
-                    }
-                    
-                    if (dist < this.target.size + 10) {
-                        this.target.alive = false;
-                        this.target = null;
-                        this.huntCooldown = 60 / simulationSpeed;
-                        this.hunts++;
-                        caughtCount++;
-                        updateStats();
-                        updateChart();
-                        checkReproductionReady();
-                    }
-                } else {
-                    this.angle += (Math.random() - 0.5) * 0.1;
-                    const actualSpeed = this.speed * simulationSpeed * 0.5;
-                    this.x += Math.cos(this.angle) * actualSpeed;
-                    this.y += Math.sin(this.angle) * actualSpeed;
-                    
-                    if (this.x < 50) this.x = 50;
-                    if (this.x > canvas.width - 50) this.x = canvas.width - 50;
-                    if (this.y < 50) this.y = 50;
-                    if (this.y > canvas.height - 50) this.y = canvas.height - 50;
-                }
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                
-                // 독수리 그림자 (위에서 본 실루엣)
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-                
-                // 스케일 조정
-                ctx.scale(1.2, 1.2);
-                
-                // 몸통
-                ctx.beginPath();
-                ctx.ellipse(0, 0, 8, 12, 0, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // 머리
-                ctx.beginPath();
-                ctx.arc(0, -10, 5, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // 왼쪽 날개 (펼친 모양)
-                ctx.beginPath();
-                ctx.moveTo(-5, -5);
-                // 날개 앞부분
-                ctx.quadraticCurveTo(-20, -8, -30, -5);
-                // 날개 끝 깃털들
-                ctx.lineTo(-32, -2);
-                ctx.lineTo(-33, 1);
-                ctx.lineTo(-32, 4);
-                ctx.lineTo(-30, 6);
-                ctx.lineTo(-27, 7);
-                // 날개 뒷부분
-                ctx.quadraticCurveTo(-20, 6, -15, 8);
-                ctx.quadraticCurveTo(-10, 10, -5, 8);
-                ctx.closePath();
-                ctx.fill();
-                
-                // 오른쪽 날개 (펼친 모양)
-                ctx.beginPath();
-                ctx.moveTo(5, -5);
-                // 날개 앞부분
-                ctx.quadraticCurveTo(20, -8, 30, -5);
-                // 날개 끝 깃털들
-                ctx.lineTo(32, -2);
-                ctx.lineTo(33, 1);
-                ctx.lineTo(32, 4);
-                ctx.lineTo(30, 6);
-                ctx.lineTo(27, 7);
-                // 날개 뒷부분
-                ctx.quadraticCurveTo(20, 6, 15, 8);
-                ctx.quadraticCurveTo(10, 10, 5, 8);
-                ctx.closePath();
-                ctx.fill();
-                
-                // 꼬리 (부채꼴 모양)
-                ctx.beginPath();
-                ctx.moveTo(-4, 10);
-                ctx.quadraticCurveTo(-3, 15, -5, 18);
-                ctx.lineTo(-3, 19);
-                ctx.lineTo(-1, 20);
-                ctx.lineTo(0, 20);
-                ctx.lineTo(1, 20);
-                ctx.lineTo(3, 19);
-                ctx.lineTo(5, 18);
-                ctx.quadraticCurveTo(3, 15, 4, 10);
-                ctx.closePath();
-                ctx.fill();
-                
-                ctx.restore();
-            }
+
+        function closeTutorial() {
+            document.getElementById('tutorialModal').style.display = 'none';
         }
-        
-        // 모달 열기
-        function openModal(scenario) {
-            currentScenario = scenario;
-            const modal = document.getElementById('setupModal');
-            const labels = scenarioLabels[scenario];
+
+        function showDevLog() {
+            document.getElementById('devLogModal').style.display = 'block';
+        }
+
+        function closeDevLog() {
+            document.getElementById('devLogModal').style.display = 'none';
+        }
+
+        function closeDistributionModal() {
+            document.getElementById('distributionModal').style.display = 'none';
+        }
+
+        // 시나리오 선택
+        function selectScenario(type) {
+            currentScenario = type;
+            showDistributionModal();
+        }
+
+        function showDistributionModal() {
+            const modal = document.getElementById('distributionModal');
+            const setup = document.getElementById('distributionSetup');
+            const scenario = scenarios[currentScenario];
             
-            document.getElementById('modalTitle').textContent = `${labels.title} - 초기 개체군 설정`;
+            document.getElementById('modalTitle').textContent = scenario.title + ' - 초기 분포 설정';
             
-            for (let i = 1; i <= 5; i++) {
-                document.getElementById(`level${i}Label`).textContent = labels.levels[i-1];
-            }
+            setup.innerHTML = `
+                <p style="margin-bottom: 20px; color: #666; text-align: center;">
+                    ${scenario.description}<br>
+                    초기 달팽이 분포를 설정하세요 (기본값: 각 10마리)
+                </p>
+                <div class="trait-level">
+                    <label>
+                        <span>${scenario.lowLabel} ${scenario.trait}</span>
+                        <input type="number" id="lowInput" value="10" min="0" max="50">
+                    </label>
+                </div>
+                <div class="trait-level">
+                    <label>
+                        <span>${scenario.medLabel} ${scenario.trait}</span>
+                        <input type="number" id="medInput" value="10" min="0" max="50">
+                    </label>
+                </div>
+                <div class="trait-level">
+                    <label>
+                        <span>${scenario.highLabel} ${scenario.trait}</span>
+                        <input type="number" id="highInput" value="10" min="0" max="50">
+                    </label>
+                </div>
+            `;
             
             modal.style.display = 'block';
         }
-        
-        // 모달 닫기
-        function closeModal() {
-            document.getElementById('setupModal').style.display = 'none';
-        }
-        
-        // 시뮬레이션 시작
+
         function startSimulation() {
-            const levelCounts = [];
-            for (let i = 1; i <= 5; i++) {
-                levelCounts.push(parseInt(document.getElementById(`level${i}Count`).value) || 0);
-            }
+            const low = parseInt(document.getElementById('lowInput').value);
+            const med = parseInt(document.getElementById('medInput').value);
+            const high = parseInt(document.getElementById('highInput').value);
             
-            initialPopulation = levelCounts.reduce((a, b) => a + b, 0);
-            
-            if (initialPopulation === 0) {
-                alert('최소 1마리 이상의 달팽이를 설정해주세요!');
+            if (low + med + high === 0) {
+                alert('최소 1마리 이상의 달팽이가 필요합니다.');
                 return;
             }
             
-            snails = [];
-            for (let level = 1; level <= 5; level++) {
-                for (let i = 0; i < levelCounts[level-1]; i++) {
-                    snails.push(new Snail(level));
-                }
-            }
-            
-            document.getElementById('setupModal').style.display = 'none';
+            closeDistributionModal();
+            initSimulation(low, med, high);
+        }
+
+        function initSimulation(lowCount, medCount, highCount) {
             document.getElementById('selectionScreen').style.display = 'none';
-            document.getElementById('simulationScreen').style.display = 'block';
             document.getElementById('simulationScreen').classList.add('active');
             
-            const labels = scenarioLabels[currentScenario];
-            document.getElementById('simTitle').textContent = labels.title;
+            const scenario = scenarios[currentScenario];
+            document.getElementById('simTitle').textContent = scenario.title;
+            document.getElementById('traitDistTitle').textContent = scenario.trait + ' 분포';
+            document.getElementById('lowLabel').textContent = scenario.lowLabel;
+            document.getElementById('medLabel').textContent = scenario.medLabel;
+            document.getElementById('highLabel').textContent = scenario.highLabel;
             
-            if (currentScenario === 'color') {
-                document.getElementById('bgSelector').style.display = 'grid';
-            } else {
-                document.getElementById('bgSelector').style.display = 'none';
-            }
+            canvas = document.getElementById('gameCanvas');
+            ctx = canvas.getContext('2d');
             
-            generation = 0;
-            caughtCount = 0;
-            mutationCount = 0;
-            eagles = [];
-            simulationSpeed = 1;
+            // 캔버스 크기 조정
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
             
-            document.getElementById('reproduceBtn').disabled = true;
-            
-            updateStats();
-            initChart();
-            updateChart();
-            createBackgroundImage();
-            drawBackground();
-        }
-        
-        // 처음으로 돌아가기
-        function backToSelection() {
-            if (isRunning) {
-                toggleSimulation();
-            }
-            
-            document.getElementById('simulationScreen').style.display = 'none';
-            document.getElementById('simulationScreen').classList.remove('active');
-            document.getElementById('selectionScreen').style.display = 'block';
-            
-            // 그래프 초기화
-            if (sideChart) {
-                sideChart.destroy();
-                sideChart = null;
-            }
-            
-            // 뷰 상태 초기화
-            showingGraph = false;
-            document.getElementById('toggleViewBtn').innerHTML = '📊 그래프';
-            document.getElementById('statsPanel').style.display = 'block';
-            document.getElementById('graphPanel').style.display = 'none';
-            
-            // 개체수 입력 초기화
-            for (let i = 1; i <= 5; i++) {
-                document.getElementById(`level${i}Count`).value = 10;
-            }
-            
-            // 모드 초기화 (수동 모드로)
-            currentMode = 'manual';
-            document.getElementById('manualMode').classList.add('active');
-            document.getElementById('autoMode').classList.remove('active');
-            eagles = [];
-            document.getElementById('eagleStats').style.display = 'none';
-            document.getElementById('speedControl').style.display = 'none';
-            
-            // 배경 초기화 (초지로)
-            currentBackground = 'grassland';
-            document.getElementById('grasslandBg').classList.add('active');
-            document.getElementById('openfieldBg').classList.remove('active');
-            backgroundImage = null;
-            
-            // 체크박스 초기화
-            document.getElementById('heritableCheck').checked = true;
-            document.getElementById('mutationCheck').checked = true;
-            
-            // 슬라이더 초기화
-            document.getElementById('mutationRate').value = 5;
-            document.getElementById('mutationRateValue').textContent = '5%';
-            document.getElementById('simSpeed').value = 1;
-            document.getElementById('simSpeedValue').textContent = '1x';
-            simulationSpeed = 1;
-            
-            // 버튼 상태 초기화
-            document.getElementById('startBtn').textContent = '▶️ 시작';
-            document.getElementById('startBtn').className = 'btn-success';
-            document.getElementById('reproduceBtn').disabled = true;
-            
-            // 변수 초기화
+            // 초기화
             snails = [];
-            generation = 0;
-            caughtCount = 0;
-            mutationCount = 0;
-            isRunning = false;
+            predators = [];
+            generation = 1;
+            generationData = [];
             
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
+            // 달팽이 생성
+            createSnails(lowCount, medCount, highCount);
+            
+            // 차트 초기화
+            initCharts();
+            
+            // 이벤트 리스너
+            canvas.addEventListener('click', handleCanvasClick);
+            document.getElementById('speedSlider').addEventListener('input', function(e) {
+                gameSpeed = parseInt(e.target.value);
+                document.getElementById('speedDisplay').textContent = gameSpeed + 'x';
+            });
+            
+            // 첫 통계 기록
+            recordGeneration();
+            updateStats();
+            
+            // 게임 루프 시작
+            gameLoop();
         }
-        
-        // 배경 생성
-        function createBackgroundImage() {
-            const offCanvas = document.createElement('canvas');
-            offCanvas.width = canvas.width;
-            offCanvas.height = canvas.height;
-            const offCtx = offCanvas.getContext('2d');
+
+        function createSnails(lowCount, medCount, highCount) {
+            const traits = [
+                ...Array(lowCount).fill(1),
+                ...Array(medCount).fill(2),
+                ...Array(highCount).fill(3)
+            ];
             
-            if (currentBackground === 'grassland') {
-                const gradient = offCtx.createLinearGradient(0, 0, 0, offCanvas.height);
-                gradient.addColorStop(0, '#8BC34A');
-                gradient.addColorStop(1, '#4CAF50');
-                offCtx.fillStyle = gradient;
-                offCtx.fillRect(0, 0, offCanvas.width, offCanvas.height);
+            traits.forEach(trait => {
+                snails.push({
+                    x: Math.random() * (canvas.width - 40) + 20,
+                    y: Math.random() * (canvas.height - 40) + 20,
+                    trait: trait,
+                    alive: true,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: (Math.random() - 0.5) * 2
+                });
+            });
+        }
+
+        function handleCanvasClick(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            predators.push({
+                x: x,
+                y: y,
+                radius: 60,
+                lifetime: 180
+            });
+        }
+
+        function gameLoop() {
+            if (!isPaused) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
-                offCtx.strokeStyle = 'rgba(76, 175, 80, 0.6)';
-                offCtx.lineWidth = 2;
-                for (let i = 0; i < 150; i++) {
-                    const x = Math.random() * offCanvas.width;
-                    const y = Math.random() * offCanvas.height;
-                    
-                    offCtx.beginPath();
-                    const blades = Math.floor(Math.random() * 3) + 3;
-                    for (let j = 0; j < blades; j++) {
-                        const angle = (Math.PI / 4) * (j / blades - 0.5);
-                        const height = Math.random() * 15 + 10;
-                        offCtx.moveTo(x, y);
-                        offCtx.quadraticCurveTo(
-                            x + Math.sin(angle) * height/2, 
-                            y - height/2,
-                            x + Math.sin(angle) * height, 
-                            y - height
-                        );
+                // 달팽이 이동
+                snails.forEach(snail => {
+                    if (snail.alive) {
+                        snail.x += snail.vx * (snail.trait * 0.3);
+                        snail.y += snail.vy * (snail.trait * 0.3);
+                        
+                        // 경계 체크
+                        if (snail.x < 10 || snail.x > canvas.width - 10) snail.vx *= -1;
+                        if (snail.y < 10 || snail.y > canvas.height - 10) snail.vy *= -1;
+                        
+                        snail.x = Math.max(10, Math.min(canvas.width - 10, snail.x));
+                        snail.y = Math.max(10, Math.min(canvas.height - 10, snail.y));
                     }
-                    offCtx.stroke();
-                }
-            } else {
-                offCtx.fillStyle = '#8B4513';
-                offCtx.fillRect(0, 0, offCanvas.width, offCanvas.height);
+                });
                 
-                for (let i = 0; i < 80; i++) {
-                    const x = Math.random() * offCanvas.width;
-                    const y = Math.random() * offCanvas.height;
-                    const size = Math.random() * 3 + 1;
-                    
-                    offCtx.fillStyle = `rgba(101, 67, 33, ${Math.random() * 0.5 + 0.2})`;
-                    offCtx.beginPath();
-                    offCtx.arc(x, y, size, 0, Math.PI * 2);
-                    offCtx.fill();
-                }
+                // 포식 처리
+                predators.forEach(pred => {
+                    if (pred.lifetime > 0) {
+                        pred.lifetime--;
+                        
+                        // 포식자 범위 내 달팽이 찾기
+                        const nearbySnails = snails.filter(s => {
+                            if (!s.alive) return false;
+                            const dx = s.x - pred.x;
+                            const dy = s.y - pred.y;
+                            return Math.sqrt(dx*dx + dy*dy) < pred.radius;
+                        });
+                        
+                        if (nearbySnails.length > 0) {
+                            // 형질에 따라 잡힐 확률 계산
+                            let targetSnail;
+                            if (currentScenario === 'speed') {
+                                // 느린 것이 먼저 (trait 낮을수록)
+                                targetSnail = nearbySnails.sort((a,b) => a.trait - b.trait)[0];
+                            } else if (currentScenario === 'color') {
+                                // 밝은 것이 먼저 (trait 높을수록)
+                                targetSnail = nearbySnails.sort((a,b) => b.trait - a.trait)[0];
+                            } else if (currentScenario === 'size') {
+                                // 큰 것이 먼저 (trait 높을수록)
+                                targetSnail = nearbySnails.sort((a,b) => b.trait - a.trait)[0];
+                            }
+                            
+                            if (Math.random() < 0.1) {
+                                targetSnail.alive = false;
+                            }
+                        }
+                    }
+                });
                 
-                offCtx.fillStyle = 'rgba(139, 90, 43, 0.4)';
-                for (let i = 0; i < 30; i++) {
-                    const x = Math.random() * offCanvas.width;
-                    const y = Math.random() * offCanvas.height;
-                    offCtx.beginPath();
-                    offCtx.ellipse(x, y, Math.random() * 8 + 3, Math.random() * 5 + 2, Math.random() * Math.PI, 0, Math.PI * 2);
-                    offCtx.fill();
-                }
+                // 포식자 제거
+                predators = predators.filter(p => p.lifetime > 0);
+                
+                // 그리기
+                drawSnails();
+                drawPredators();
             }
             
-            backgroundImage = offCanvas;
+            setTimeout(() => requestAnimationFrame(gameLoop), 1000 / (30 * gameSpeed));
         }
-        
-        function drawBackground() {
-            if (!backgroundImage) {
-                createBackgroundImage();
-            }
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(backgroundImage, 0, 0);
-        }
-        
-        // 모드 설정
-        function setMode(mode) {
-            currentMode = mode;
-            
-            document.getElementById('manualMode').classList.toggle('active', mode === 'manual');
-            document.getElementById('autoMode').classList.toggle('active', mode === 'auto');
-            
-            if (mode === 'auto') {
-                eagles = [new Eagle(0), new Eagle(1)];
-                document.getElementById('eagleStats').style.display = 'flex';
-                document.getElementById('speedControl').style.display = 'block';
-            } else {
-                eagles = [];
-                document.getElementById('eagleStats').style.display = 'none';
-                document.getElementById('speedControl').style.display = 'none';
-            }
-        }
-        
-        // 배경 설정
-        function setBackground(bg) {
-            currentBackground = bg;
-            
-            document.getElementById('grasslandBg').classList.toggle('active', bg === 'grassland');
-            document.getElementById('openfieldBg').classList.toggle('active', bg === 'openfield');
-            
-            backgroundImage = null;
-            drawBackground();
-        }
-        
-        // 시뮬레이션 토글
-        function toggleSimulation() {
-            isRunning = !isRunning;
-            const btn = document.getElementById('startBtn');
-            
-            if (isRunning) {
-                btn.textContent = '⏸️ 정지';
-                btn.className = 'btn-danger';
-                document.getElementById('reproduceBtn').disabled = true;
-                animate();
-            } else {
-                btn.textContent = '▶️ 시작';
-                btn.className = 'btn-success';
-                document.getElementById('reproduceBtn').disabled = false;
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                }
-            }
-        }
-        
-        // 애니메이션
-        function animate() {
-            if (!isRunning) return;
-            
-            drawBackground();
-            
+
+        function drawSnails() {
             snails.forEach(snail => {
-                snail.update();
-                snail.draw();
-            });
-            
-            eagles.forEach(eagle => {
-                eagle.update();
-                eagle.draw();
-            });
-            
-            if (eagles.length > 0) {
-                const totalHunts = eagles.reduce((sum, e) => sum + e.hunts, 0);
-                document.getElementById('eagleHunts').textContent = totalHunts;
-            }
-            
-            animationId = requestAnimationFrame(animate);
-        }
-        
-        // 번식 가능 체크
-        function checkReproductionReady() {
-            const aliveCount = snails.filter(s => s.alive).length;
-            const halfPopulation = Math.floor(initialPopulation / 2);
-            
-            // 자동 모드에서만 절반에서 정지
-            if (currentMode === 'auto' && aliveCount <= halfPopulation) {
-                // 자동 모드: 절반 이하가 되면 자동 정지
-                isRunning = false;
-                document.getElementById('startBtn').textContent = '▶️ 시작';
-                document.getElementById('startBtn').className = 'btn-success';
-                document.getElementById('reproduceBtn').disabled = false;
-                
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
+                if (snail.alive) {
+                    ctx.beginPath();
+                    ctx.arc(snail.x, snail.y, 8, 0, Math.PI * 2);
+                    
+                    if (currentScenario === 'speed') {
+                        ctx.fillStyle = snail.trait === 1 ? '#ff6b6b' : 
+                                       snail.trait === 2 ? '#ffd93d' : '#6bcf7f';
+                    } else if (currentScenario === 'color') {
+                        ctx.fillStyle = snail.trait === 1 ? '#2c3e50' : 
+                                       snail.trait === 2 ? '#95a5a6' : '#ecf0f1';
+                    } else {
+                        const size = snail.trait === 1 ? 6 : snail.trait === 2 ? 8 : 10;
+                        ctx.arc(snail.x, snail.y, size, 0, Math.PI * 2);
+                        ctx.fillStyle = '#8b7355';
+                    }
+                    
+                    ctx.fill();
+                    ctx.strokeStyle = '#333';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
                 }
-                
-                alert(`자동 모드: 개체수가 절반(${halfPopulation}마리) 이하가 되었습니다.\n번식 버튼을 눌러 다음 세대를 만드세요!`);
-            }
-            // 수동 모드에서는 정지하지 않음
+            });
         }
-        
-        // 번식
-        function reproduce() {
-            const aliveSnails = snails.filter(s => s.alive);
+
+        function drawPredators() {
+            predators.forEach(pred => {
+                ctx.beginPath();
+                ctx.arc(pred.x, pred.y, pred.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 0, 0, ${pred.lifetime / 180 * 0.2})`;
+                ctx.fill();
+                ctx.strokeStyle = 'red';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // 포식자 아이콘
+                ctx.font = '24px Arial';
+                ctx.fillStyle = 'red';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🦅', pred.x, pred.y);
+            });
+        }
+
+        function nextGeneration() {
+            const survivors = snails.filter(s => s.alive);
             
-            if (aliveSnails.length === 0) {
-                alert('살아있는 개체가 없습니다!');
+            if (survivors.length === 0) {
+                alert('모든 달팽이가 죽었습니다! 시뮬레이션을 초기화합니다.');
+                resetSimulation();
                 return;
             }
             
-            const isHeritable = document.getElementById('heritableCheck').checked;
-            const isMutation = document.getElementById('mutationCheck').checked;
-            const mutationRate = document.getElementById('mutationRate').value / 100;
-            
+            // 새 세대 생성
             const newSnails = [];
-            let mutationOccurred = 0; // 이번 번식에서 발생한 돌연변이 수
+            const targetPopulation = 30;
             
-            aliveSnails.forEach(parent => {
-                parent.alive = true;
-                newSnails.push(parent);
-                
-                let childLevel = parent.level;
-                
-                if (isHeritable) {
-                    if (isMutation) {
-                        // 각 자손마다 돌연변이 확률 계산
-                        const randomValue = Math.random();
-                        if (randomValue < mutationRate) {
-                            mutationOccurred++;
-                            
-                            // 돌연변이 강도를 다양하게
-                            const mutationStrength = Math.random();
-                            let change;
-                            
-                            if (mutationStrength < 0.7) {
-                                // 70% 확률로 ±1 변화
-                                change = Math.random() < 0.5 ? -1 : 1;
-                            } else if (mutationStrength < 0.95) {
-                                // 25% 확률로 ±2 변화
-                                change = Math.random() < 0.5 ? -2 : 2;
-                            } else {
-                                // 5% 확률로 ±3 변화 (큰 돌연변이)
-                                change = Math.random() < 0.5 ? -3 : 3;
-                            }
-                            
-                            childLevel = Math.max(1, Math.min(5, parent.level + change));
-                        }
-                    }
-                } else {
-                    childLevel = Math.floor(Math.random() * 5) + 1;
-                }
-                
-                const angle = Math.random() * Math.PI * 2;
-                const distance = parent.size + 25;
-                const childX = parent.x + Math.cos(angle) * distance;
-                const childY = parent.y + Math.sin(angle) * distance;
-                
-                const x = Math.max(30, Math.min(canvas.width - 30, childX));
-                const y = Math.max(30, Math.min(canvas.height - 30, childY));
-                
-                const child = new Snail(childLevel, x, y);
-                child.alive = true;
-                newSnails.push(child);
-            });
-            
-            snails = newSnails;
-            generation++;
-            caughtCount = 0;
-            mutationCount += mutationOccurred; // 누적 돌연변이 수 업데이트
-            
-            eagles.forEach(eagle => {
-                eagle.hunts = 0;
-            });
-            
-            document.getElementById('reproduceBtn').disabled = false;
-            
-            updateStats();
-            updateChart();
-            
-            if (!isRunning) {
-                drawBackground();
-                snails.forEach(snail => {
-                    if (snail.alive) {
-                        snail.draw();
-                    }
+            for (let i = 0; i < targetPopulation; i++) {
+                const parent = survivors[Math.floor(Math.random() * survivors.length)];
+                newSnails.push({
+                    x: Math.random() * (canvas.width - 40) + 20,
+                    y: Math.random() * (canvas.height - 40) + 20,
+                    trait: parent.trait,
+                    alive: true,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: (Math.random() - 0.5) * 2
                 });
             }
-        }
-        
-        // 초기화
-        function resetSimulation() {
-            isRunning = false;
-            document.getElementById('startBtn').textContent = '▶️ 시작';
-            document.getElementById('startBtn').className = 'btn-success';
-            document.getElementById('reproduceBtn').disabled = true;
             
-            snails = [];
-            for (let level = 1; level <= 5; level++) {
-                const count = parseInt(document.getElementById(`level${level}Count`).value) || 0;
-                for (let i = 0; i < count; i++) {
-                    snails.push(new Snail(level));
-                }
-            }
+            snails = newSnails;
+            predators = [];
+            generation++;
             
-            generation = 0;
-            caughtCount = 0;
-            mutationCount = 0;
-            
-            eagles.forEach((eagle, index) => {
-                eagles[index] = new Eagle(index);
-            });
-            
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-            
+            recordGeneration();
             updateStats();
-            updateChart();
-            drawBackground();
+            updateCharts();
         }
-        
-        // 통계 업데이트
+
+        function recordGeneration() {
+            const aliveSnails = snails.filter(s => s.alive);
+            const avgTrait = aliveSnails.reduce((sum, s) => sum + s.trait, 0) / aliveSnails.length;
+            
+            generationData.push({
+                generation: generation,
+                avgTrait: avgTrait,
+                population: aliveSnails.length,
+                low: aliveSnails.filter(s => s.trait === 1).length,
+                med: aliveSnails.filter(s => s.trait === 2).length,
+                high: aliveSnails.filter(s => s.trait === 3).length
+            });
+        }
+
         function updateStats() {
             const aliveSnails = snails.filter(s => s.alive);
+            const avgTrait = aliveSnails.length > 0 ? 
+                (aliveSnails.reduce((sum, s) => sum + s.trait, 0) / aliveSnails.length).toFixed(2) : 0;
             
-            document.getElementById('totalCount').textContent = aliveSnails.length;
-            document.getElementById('generation').textContent = generation;
-            document.getElementById('caughtCount').textContent = caughtCount;
-            document.getElementById('mutationCount').textContent = mutationCount;
-            
-            if (aliveSnails.length > 0) {
-                let avgValue = 0;
-                
-                if (currentScenario === 'speed') {
-                    avgValue = aliveSnails.reduce((sum, s) => sum + s.speed, 0) / aliveSnails.length;
-                    document.getElementById('avgValue').textContent = avgValue.toFixed(2) + ' m/s';
-                } else if (currentScenario === 'color') {
-                    avgValue = aliveSnails.reduce((sum, s) => sum + s.level, 0) / aliveSnails.length;
-                    document.getElementById('avgValue').textContent = avgValue.toFixed(1) + ' 레벨';
-                } else if (currentScenario === 'size') {
-                    avgValue = aliveSnails.reduce((sum, s) => sum + s.size, 0) / aliveSnails.length;
-                    document.getElementById('avgValue').textContent = avgValue.toFixed(1) + ' mm';
-                }
-            } else {
-                document.getElementById('avgValue').textContent = '0';
-            }
+            document.getElementById('generationDisplay').textContent = generation;
+            document.getElementById('populationDisplay').textContent = aliveSnails.length;
+            document.getElementById('avgTraitDisplay').textContent = avgTrait;
+            document.getElementById('lowCount').textContent = aliveSnails.filter(s => s.trait === 1).length;
+            document.getElementById('medCount').textContent = aliveSnails.filter(s => s.trait === 2).length;
+            document.getElementById('highCount').textContent = aliveSnails.filter(s => s.trait === 3).length;
         }
-        
-        // 뷰 토글 (통계 <-> 그래프)
-        function toggleView() {
-            showingGraph = !showingGraph;
-            const btn = document.getElementById('toggleViewBtn');
-            const statsPanel = document.getElementById('statsPanel');
-            const graphPanel = document.getElementById('graphPanel');
-            
-            if (showingGraph) {
-                statsPanel.style.display = 'none';
-                graphPanel.style.display = 'block';
-                btn.innerHTML = '📊 인덱스';
-                
-                // 그래프가 없으면 생성
-                if (!sideChart) {
-                    initSideChart();
-                }
-                updateChart();
-            } else {
-                statsPanel.style.display = 'block';
-                graphPanel.style.display = 'none';
-                btn.innerHTML = '📊 그래프';
-            }
-        }
-        
-        // 사이드 차트 초기화
-        function initSideChart() {
-            const ctx = document.getElementById('sideChart').getContext('2d');
-            const labels = scenarioLabels[currentScenario];
-            
-            sideChart = new Chart(ctx, {
-                type: 'bar',
+
+        function initCharts() {
+            // 메인 차트
+            const ctx1 = document.getElementById('traitChart').getContext('2d');
+            traitChart = new Chart(ctx1, {
+                type: 'line',
                 data: {
-                    labels: labels.levels,
+                    labels: [1],
                     datasets: [{
-                        label: '개체수',
-                        data: [0, 0, 0, 0, 0],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.5)',
-                            'rgba(255, 159, 64, 0.5)',
-                            'rgba(255, 205, 86, 0.5)',
-                            'rgba(75, 192, 192, 0.5)',
-                            'rgba(54, 162, 235, 0.5)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 205, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(54, 162, 235, 1)'
-                        ],
-                        borderWidth: 2
+                        label: '평균 형질값',
+                        data: [generationData[0]?.avgTrait || 0],
+                        borderColor: '#3d4e9f',
+                        backgroundColor: 'rgba(61, 78, 159, 0.1)',
+                        tension: 0.4,
+                        fill: true
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,
+                    maintainAspectRatio: true,
                     scales: {
                         y: {
                             beginAtZero: true,
-                            ticks: {
-                                stepSize: 1
-                            }
+                            max: 3,
+                            ticks: { color: '#495057' }
+                        },
+                        x: {
+                            ticks: { color: '#495057' }
                         }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#495057' } }
+                    }
+                }
+            });
+            
+            // 사이드 차트
+            const ctx2 = document.getElementById('sideChart').getContext('2d');
+            sideChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: [scenarios[currentScenario].lowLabel, 
+                            scenarios[currentScenario].medLabel, 
+                            scenarios[currentScenario].highLabel],
+                    datasets: [{
+                        label: '개체 수',
+                        data: [
+                            generationData[0]?.low || 0,
+                            generationData[0]?.med || 0,
+                            generationData[0]?.high || 0
+                        ],
+                        backgroundColor: ['#ff6b6b', '#ffd93d', '#6bcf7f']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { color: '#495057' }
+                        },
+                        x: {
+                            ticks: { color: '#495057' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
                     }
                 }
             });
         }
-        
-        // 차트 초기화
-        function initChart() {
-            // 사이드 차트는 toggleView에서 처리
-        }
-        
-        // 차트 업데이트
-        function updateChart() {
-            if (sideChart && showingGraph) {
-                const counts = [0, 0, 0, 0, 0];
-                const aliveSnails = snails.filter(s => s.alive);
-                
-                aliveSnails.forEach(s => {
-                    counts[s.level - 1]++;
-                });
-                
-                sideChart.data.datasets[0].data = counts;
+
+        function updateCharts() {
+            const lastGen = generationData[generationData.length - 1];
+            
+            // 메인 차트 업데이트
+            traitChart.data.labels = generationData.map(d => d.generation);
+            traitChart.data.datasets[0].data = generationData.map(d => d.avgTrait);
+            traitChart.update();
+            
+            // 사이드 차트 업데이트
+            if (sideChart) {
+                sideChart.data.datasets[0].data = [lastGen.low, lastGen.med, lastGen.high];
                 sideChart.update();
             }
         }
-        
-        // 클릭 이벤트
-        canvas.addEventListener('click', (e) => {
-            if (!isRunning || currentMode !== 'manual') return;
+
+        function togglePause() {
+            isPaused = !isPaused;
+            document.getElementById('pauseBtn').textContent = isPaused ? '재개 ▶' : '일시정지 ⏸';
+        }
+
+        function toggleView() {
+            showGraph = !showGraph;
+            document.getElementById('statsPanel').style.display = showGraph ? 'none' : 'block';
+            document.getElementById('graphPanel').style.display = showGraph ? 'block' : 'none';
             
-            const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.width / rect.width;
-            const scaleY = canvas.height / rect.height;
-            const x = (e.clientX - rect.left) * scaleX;
-            const y = (e.clientY - rect.top) * scaleY;
-            
-            for (let i = snails.length - 1; i >= 0; i--) {
-                const snail = snails[i];
-                if (snail.alive && snail.isClicked(x, y)) {
-                    snail.alive = false;
-                    caughtCount++;
-                    updateStats();
-                    updateChart();
-                    checkReproductionReady();
-                    break;
-                }
+            if (showGraph && sideChart) {
+                const lastGen = generationData[generationData.length - 1];
+                sideChart.data.datasets[0].data = [lastGen.low, lastGen.med, lastGen.high];
+                sideChart.update();
             }
-        });
-        
-        // 슬라이더 이벤트
-        document.getElementById('mutationRate').addEventListener('input', (e) => {
-            document.getElementById('mutationRateValue').textContent = e.target.value + '%';
-        });
-        
-        document.getElementById('simSpeed').addEventListener('input', (e) => {
-            simulationSpeed = parseFloat(e.target.value);
-            document.getElementById('simSpeedValue').textContent = simulationSpeed + 'x';
-        });
-        
-        // 창 크기 조정 시 반응형 처리
-        window.addEventListener('resize', () => {
-            if (snails.length > 0) {
-                drawBackground();
-                snails.forEach(s => {
-                    if (s.alive) s.draw();
-                });
-                eagles.forEach(e => e.draw());
+        }
+
+        function resetSimulation() {
+            if (confirm('시뮬레이션을 초기화하시겠습니까?')) {
+                showDistributionModal();
             }
-        });
+        }
+
+        function backToSelection() {
+            if (confirm('시뮬레이션을 종료하고 메인 화면으로 돌아가시겠습니까?')) {
+                document.getElementById('simulationScreen').classList.remove('active');
+                document.getElementById('selectionScreen').style.display = 'block';
+                
+                // 정리
+                if (traitChart) traitChart.destroy();
+                if (sideChart) sideChart.destroy();
+                canvas.removeEventListener('click', handleCanvasClick);
+            }
+        }
+
+        // 모달 외부 클릭시 닫기
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
