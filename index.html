@@ -637,6 +637,12 @@
         <h1>🐌 달팽이 진화 시뮬레이션</h1>
         <p>어떤 형질의 진화를 관찰하시겠습니까?</p>
         
+        <!-- 홈 버튼 섹션 추가 -->
+        <div class="home-buttons">
+            <button class="home-btn" onclick="showTutorial()">📖 사용법</button>
+            <button class="home-btn" onclick="showDevLog()">📝 개발자 로그</button>
+        </div>
+        
         <div class="scenario-cards">
             <div class="scenario-card speed-card" onclick="openModal('speed')">
                 <div class="icon">⚡</div>
@@ -654,6 +660,116 @@
                 <div class="icon">📏</div>
                 <h2>크기의 진화</h2>
                 <p>개체의 크기가 포식 위험에 미치는 영향을 관찰합니다. 작은 개체가 더 안전할까요?</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 튜토리얼 모달 -->
+    <div class="modal" id="tutorialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📖 사용법 안내</h3>
+                <button class="modal-close" onclick="closeTutorial()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="log-entry">
+                    <div class="log-date">🎯 프로그램 소개</div>
+                    <div class="log-text">
+                        <strong>달팽이 진화 시뮬레이션</strong>은 자연선택을 통한 진화 과정을 시각적으로 보여주는 교육용 프로그램입니다. 
+                        세 가지 시나리오(속도, 보호색, 크기)를 통해 특정 형질이 생존에 유리할 때 집단의 평균 형질이 어떻게 변화하는지 관찰할 수 있습니다.
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">📚 기본 사용법</div>
+                    <div class="log-text">
+                        <strong>1단계: 시나리오 선택</strong><br>
+                        • <strong>속도 진화</strong>: 느린 달팽이가 먼저 잡아먹힘<br>
+                        • <strong>보호색 진화</strong>: 밝은 색 달팽이가 먼저 잡아먹힘<br>
+                        • <strong>크기 진화</strong>: 큰 달팽이가 먼저 잡아먹힘<br><br>
+                        
+                        <strong>2단계: 초기 분포 설정 (선택)</strong><br>
+                        • 시나리오 선택 후 나타나는 팝업에서 형질 분포를 설정할 수 있습니다<br>
+                        • 낮음/중간/높음 형질을 가진 달팽이의 개체수를 조절하세요<br>
+                        • "시작하기" 버튼을 눌러 시뮬레이션을 시작합니다<br><br>
+                        
+                        <strong>3단계: 포식자 배치</strong><br>
+                        • 화면의 캔버스를 클릭하여 포식자를 배치하세요<br>
+                        • 포식자는 주변의 달팽이를 잡아먹습니다<br>
+                        • 생존에 불리한 형질을 가진 달팽이가 먼저 잡아먹힙니다<br><br>
+                        
+                        <strong>4단계: 세대 진행 및 관찰</strong><br>
+                        • "다음 세대" 버튼으로 세대를 진행합니다<br>
+                        • 생존한 달팽이들이 번식하여 새로운 세대가 생성됩니다<br>
+                        • 오른쪽 통계 패널에서 집단의 평균 형질 변화를 확인하세요<br>
+                        • 그래프를 통해 세대별 형질 분포 변화를 시각적으로 확인할 수 있습니다<br><br>
+                        
+                        <strong>5단계: 실험 제어</strong><br>
+                        • <strong>일시정지/재개</strong>: 시뮬레이션을 일시 중지하거나 다시 시작<br>
+                        • <strong>초기화</strong>: 시뮬레이션을 처음 상태로 되돌림<br>
+                        • <strong>속도 조절</strong>: 슬라이더로 시뮬레이션 속도 조절<br>
+                        • <strong>통계/그래프 보기</strong>: 우측 패널 전환
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">💡 학습 팁</div>
+                    <div class="log-text">
+                        <strong>효과적인 관찰 방법:</strong><br>
+                        • 각 시나리오를 여러 번 실행하여 일관된 패턴을 확인하세요<br>
+                        • 초기 분포를 다르게 설정하여 결과를 비교해보세요<br>
+                        • 포식자의 수와 배치 위치를 달리하며 실험하세요<br>
+                        • 그래프에서 세대가 지날수록 형질 분포가 어떻게 변하는지 주목하세요<br>
+                        • 평균값의 변화 추이를 관찰하세요<br><br>
+                        
+                        <strong>주의할 점:</strong><br>
+                        • 자연선택은 확률적 과정이므로 매번 똑같은 결과가 나오지 않을 수 있습니다<br>
+                        • 포식 압력이 너무 강하면 집단이 멸종할 수 있습니다<br>
+                        • 충분한 세대를 진행해야 명확한 진화 경향을 관찰할 수 있습니다
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">🔬 과학적 배경</div>
+                    <div class="log-text">
+                        이 시뮬레이션은 <strong>다윈의 자연선택 이론</strong>을 보여줍니다. 집단 내에 다양한 형질이 존재하고, 
+                        특정 형질이 생존과 번식에 유리할 때, 그 형질을 가진 개체가 더 많은 자손을 남기게 됩니다. 
+                        세대가 거듭되면서 유리한 형질의 빈도가 증가하고, 집단의 평균 형질이 변화합니다. 
+                        이것이 바로 <strong>진화</strong>입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 개발자 로그 모달 -->
+    <div class="modal" id="devLogModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📝 개발자 로그</h3>
+                <button class="modal-close" onclick="closeDevLog()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="log-entry">
+                    <div class="log-date">2025. 10. 26. (일)</div>
+                    <div class="log-text">
+                        <strong>달팽이 진화 시뮬레이션 v1.0 출시</strong><br>
+                        자연선택과 진화를 시각적으로 이해할 수 있는 교육용 시뮬레이션 프로그램을 공개했습니다. 
+                        세 가지 시나리오(속도, 보호색, 크기)를 통해 학생들이 진화의 원리를 직접 실험하고 관찰할 수 있습니다.
+                    </div>
+                </div>
+                
+                <div class="log-entry">
+                    <div class="log-date">©️ 저작권 정보</div>
+                    <div class="log-text">
+                        <strong>달팽이 진화 시뮬레이션 v1.0</strong><br><br>
+                        ⓒ 2025 충남삼성고등학교 신도경 교사<br>
+                        이메일: <a href="mailto:pantarei01@cnsa.hs.kr">pantarei01@cnsa.hs.kr</a><br><br>
+                        
+                        본 프로그램은 교육 목적으로 제작되었으며, 자유롭게 사용하실 수 있습니다.<br>
+                        상업적 이용 시에는 제작자에게 문의해 주시기 바랍니다.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -811,7 +927,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script>
         // 전역 변수
