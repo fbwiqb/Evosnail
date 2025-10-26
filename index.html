@@ -61,7 +61,28 @@
             font-weight: bold;
             transition: all 0.3s ease;
         }
-        
+        /* Footer 스타일 추가 */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #3d4e9f;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    z-index: 999;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
         .home-btn:hover {
             background: #2d3e8f;
             transform: translateY(-2px);
@@ -1875,5 +1896,23 @@ window.onclick = function(event) {
             }
         });
     </script>
+// 창 크기 조정 시 반응형 처리
+        window.addEventListener('resize', () => {
+            if (snails.length > 0) {
+                drawBackground();
+                snails.forEach(s => {
+                    if (s.alive) s.draw();
+                });
+                eagles.forEach(e => e.draw());
+            }
+        });
+    </script>
+    
+    <!-- Footer 여기에 추가 -->
+    <div class="footer">
+        ⓒ 2025 충남삼성고등학교 신도경T<br>
+        <a href="mailto:pantarei01@cnsa.hs.kr">pantarei01@cnsa.hs.kr</a>
+    </div>
+
 </body>
 </html>
